@@ -1,0 +1,189 @@
+/*VARIABLES*/
+
+$container: 980px;
+
+/*Primaries*/
+
+$orange:hsl(35, 77%, 62%);
+$red:hsl(5, 85%, 63%);
+
+/*Neutral*/
+
+$black:hsl(0, 0%, 5%);
+$white:hsl(36, 100%, 99%);
+$blue: hsl(233, 8%, 79%);
+$blue-dark:hsl(236, 13%, 42%);
+$blue-darkest:hsl(240, 100%, 5%);
+
+
+@import url('https://fonts.googleapis.com/css?family=Inter:400');
+
+html {font-size: 15px ;} /*16px*/
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/*Type*/
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: $black;
+}
+
+h1, h2, h3{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+p, a {font-size: 1rem; color: $blue-dark; text-decoration: none;}
+h3 {font-size: 1rem;}
+h2 {font-size: 1.7rem;}
+h1 {font-size: 2.3rem;}
+
+a{
+    cursor: pointer;
+}
+
+a:hover{
+    color: $orange;
+    h3{
+        color: $orange;
+    }
+}
+
+
+
+.container{
+    display: grid;
+    max-width: $container;
+    min-width: 380px;
+    margin: auto;
+    grid-template-areas:"main main new" "main main new" "trending trending trending";
+    gap:3rem;
+    main ,.new ,.trending{
+        display: flex;
+        gap:1.5rem;
+    }
+}
+
+/*NAV*/
+
+nav{
+    height: 15vh;
+    .nav-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        max-width: $container;
+        margin: auto;
+        height: 100%;
+            aside{
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                .icon{
+                        display: none;
+                        height: 100%;
+                        width: 32px;
+                }
+                .menu-links{
+                    display: flex;
+                    gap: 2rem;
+                }
+            }
+    }
+}
+
+
+/*Buttons*/
+
+button{
+    outline: none;
+    border: none;
+    padding: 1rem;
+    background: $red;
+    max-width: 200px;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+/*MAIN*/
+
+main{
+    flex-direction: column;
+    grid-area: main;
+    img{
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+    }
+}
+
+/*NEW*/
+
+.new{
+    grid-area: new;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background: $blue-darkest;
+    .row{
+        display: grid;
+        gap: 0.5rem;
+    }
+    .row:not(:last-of-type){
+        padding-bottom: 2rem;
+        border-bottom: solid 1px $blue;
+    }
+    h2{
+        font-size: 3rem;
+        color: $orange;
+    }
+    h3{
+        color: $white;
+    }
+    p{
+        color: $blue-dark;
+    }
+}
+
+/*TRENDING*/
+
+.trending{
+    grid-area: trending;
+    display: flex;
+    .row{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1rem;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .trending-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+}
+
+.footer{
+    text-align: center;
+    color: $white;
+    margin-top: 3rem;
+    background: $black;
+    padding: 1.5rem;
+    a{
+        color: $white;
+    }
+}
