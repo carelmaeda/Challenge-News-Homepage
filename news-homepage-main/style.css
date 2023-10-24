@@ -67,7 +67,7 @@ a:hover h3 {
 
 /*NAV*/
 nav {
-  height: 15vh;
+  height: 12vh;
 }
 nav .nav-container {
   width: 100%;
@@ -174,4 +174,125 @@ main img {
 }
 .footer a {
   color: hsl(36, 100%, 99%);
+}
+
+@media only screen and (max-width: 980px) {
+  .container {
+    width: 100%;
+    display: grid;
+    max-width: 980px;
+    min-width: 380px;
+    margin: auto;
+    grid-template-areas: "main" "new" "trending";
+    gap: 3rem;
+  }
+  .container main, .container .new, .container .trending {
+    display: flex;
+    gap: 1.5rem;
+  }
+  /*NAV*/
+  nav {
+    display: none;
+  }
+  nav .nav-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    max-width: 980px;
+    margin: auto;
+    height: 100%;
+  }
+  nav .nav-container aside {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  nav .nav-container aside .icon {
+    display: none;
+    height: 100%;
+    width: 32px;
+  }
+  nav .nav-container aside .menu-links {
+    display: flex;
+    gap: 2rem;
+  }
+  /*Buttons*/
+  button {
+    outline: none;
+    border: none;
+    padding: 1rem;
+    background: hsl(5, 85%, 63%);
+    max-width: 200px;
+    color: hsl(36, 100%, 99%);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+  /*MAIN*/
+  main {
+    flex-direction: column;
+    grid-area: main;
+  }
+  main img {
+    width: 100%;
+    max-height: 250px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  /*NEW*/
+  .new {
+    grid-area: new;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background: hsl(240, 100%, 5%);
+  }
+  .new .row {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .new .row:not(:last-of-type) {
+    padding-bottom: 2rem;
+    border-bottom: solid 1px hsl(233, 8%, 79%);
+  }
+  .new h2 {
+    font-size: 3rem;
+    color: hsl(35, 77%, 62%);
+  }
+  .new h3 {
+    color: hsl(36, 100%, 99%);
+  }
+  .new p {
+    color: hsl(236, 13%, 42%);
+  }
+  /*TRENDING*/
+  .trending {
+    grid-area: trending;
+    display: flex;
+  }
+  .trending .row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+  }
+  .trending .row img {
+    width: 100%;
+    height: 100%;
+  }
+  .trending .row .trending-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .footer {
+    text-align: center;
+    color: hsl(36, 100%, 99%);
+    margin-top: 3rem;
+    background: hsl(0, 0%, 5%);
+    padding: 1.5rem;
+  }
+  .footer a {
+    color: hsl(36, 100%, 99%);
+  }
 }/*# sourceMappingURL=style.css.map */
