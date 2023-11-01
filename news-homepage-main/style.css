@@ -5,7 +5,7 @@
 html {
   font-size: 15px;
 } /*16px*/
-* {
+*, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -65,14 +65,16 @@ a:hover h3 {
   gap: 1.5rem;
 }
 
-/*NAV*/
+/*NAV DESKTOP*/
 nav {
   height: 12vh;
 }
 nav .nav-container {
   width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   max-width: 980px;
   margin: auto;
   height: 100%;
@@ -82,9 +84,12 @@ nav .nav-container aside {
   display: flex;
   justify-content: end;
 }
-nav .nav-container aside .icon {
+nav .nav-container aside .menu-icons {
   display: none;
-  height: 100%;
+}
+nav .nav-container aside .menu-icons .icon {
+  cursor: pointer;
+  height: 32px;
   width: 32px;
 }
 nav .nav-container aside .menu-links {
@@ -105,11 +110,17 @@ button {
   font-size: 1.2rem;
   letter-spacing: 3px;
 }
+button :hover {
+  background: hsl(36, 100%, 99%);
+  color: hsl(0, 0%, 5%);
+}
 
 /*MAIN*/
 main {
   flex-direction: column;
   grid-area: main;
+  height: -moz-min-content;
+  height: min-content;
 }
 main img {
   width: 100%;
@@ -123,8 +134,10 @@ main img {
   grid-area: new;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem;
   background: hsl(240, 100%, 5%);
+  height: -moz-min-content;
+  height: min-content;
 }
 .new .row {
   display: grid;
@@ -176,63 +189,85 @@ main img {
   color: hsl(36, 100%, 99%);
 }
 
+/*----------------- MOBILE ---------------------*/
 @media only screen and (max-width: 980px) {
   .container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    display: grid;
+    height: 100%;
     max-width: 980px;
     min-width: 380px;
+    padding-top: 10vh;
     margin: auto;
-    grid-template-areas: "main" "new" "trending";
     gap: 3rem;
   }
   .container main, .container .new, .container .trending {
     display: flex;
     gap: 1.5rem;
   }
-  /*NAV*/
+  /*NAV MOBILE*/
   nav {
-    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    height: 12vh;
   }
   nav .nav-container {
     width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
     max-width: 980px;
     margin: auto;
     height: 100%;
   }
+  nav .nav-container .logo {
+    margin: 1rem;
+  }
   nav .nav-container aside {
+    background: hsl(36, 100%, 99%);
+    color: hsl(0, 0%, 5%);
     width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  nav .nav-container aside .menu-icons {
+    padding: 0 2rem 0 0;
+    height: 0;
+    position: relative;
+    display: flex;
+    width: 100%;
     justify-content: end;
   }
-  nav .nav-container aside .icon {
-    display: none;
-    height: 100%;
+  nav .nav-container aside .menu-icons .icon {
+    margin-block: 1rem;
+    position: absolute;
+    top: 0;
+    height: 32px;
     width: 32px;
   }
+  nav .nav-container aside .menu-icons .icon-open {
+    display: block;
+  }
+  nav .nav-container aside .menu-icons .icon-close {
+    display: none;
+  }
   nav .nav-container aside .menu-links {
-    display: flex;
+    display: none;
+    padding: 8rem 0 0 2rem;
+    flex-direction: column;
+    height: 100vh;
+    width: 60vw;
+    bottom: 0;
     gap: 2rem;
   }
-  /*Buttons*/
-  button {
-    outline: none;
-    border: none;
-    padding: 1rem;
-    background: hsl(5, 85%, 63%);
-    max-width: 200px;
-    color: hsl(36, 100%, 99%);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-  }
-  /*MAIN*/
+  /*MAIN MOBILE*/
   main {
+    padding-inline: 1rem;
     flex-direction: column;
-    grid-area: main;
   }
   main img {
     width: 100%;
@@ -240,7 +275,7 @@ main img {
     -o-object-fit: cover;
        object-fit: cover;
   }
-  /*NEW*/
+  /*NEW MOBILE*/
   .new {
     grid-area: new;
     flex-direction: column;
@@ -266,10 +301,10 @@ main img {
   .new p {
     color: hsl(236, 13%, 42%);
   }
-  /*TRENDING*/
+  /*TRENDING MOBILE*/
   .trending {
-    grid-area: trending;
-    display: flex;
+    padding-inline: 1rem;
+    flex-direction: column;
   }
   .trending .row {
     display: grid;
@@ -286,11 +321,12 @@ main img {
     justify-content: space-between;
   }
   .footer {
+    display: none;
     text-align: center;
     color: hsl(36, 100%, 99%);
     margin-top: 3rem;
     background: hsl(0, 0%, 5%);
-    padding: 1.5rem;
+    padding: 1rem;
   }
   .footer a {
     color: hsl(36, 100%, 99%);
